@@ -7,65 +7,85 @@ tasks = [
 ]
 
 #Task1
-var1 = []
-for task in tasks:
-    if task["completed"] == False:
-        var1.append(task)
-print(f"#Task 1 is {var1}")
+def uncompleted_tasks():
+    var1 = []
+    for task in tasks:
+        if task["completed"] == False:
+            var1.append(task)
+    return var1
+
+var_1 = uncompleted_tasks()
+print(var_1)
 
 #Task2
-var2 = []
-for task in tasks:
-    if task["completed"] == True:
-        var2.append(task)
-print(f"#Task2 is {var2}")
+def completed_tasks():
+    var2 = []
+    for task in tasks:
+        if task["completed"] == True:
+            var2.append(task)
+    return var2
+
+var_2 = completed_tasks()
+print(var_2)
 
 #Task3
-var3 = []
-for task in tasks:
-    var3.append(task["description"])
-print(f"#Task3 is {var3}")
+def print_descriptions():
+    var3 = []
+    for task in tasks:
+        var3.append(task["description"])
+    return var3
 
-#Task4 
-var4 =[]
-time = 15 #time for task
-for task in tasks:
-    if task["time_taken"]<= time:
+var_3 = print_descriptions()
+print(var_3)
 
-        var4.append(task)
-print(f"#Task4 the activities that last at least {time} are {var4}")
+#Task4
+def time_taken(task_time):
+    var4 =[]
+    for task in tasks:
+        if task["time_taken"]<= task_time:
+            var4.append(task)
+    return var4
 
-#Task 5
+var_4 = time_taken(15)
+print(var_4)
 
-var_description = "Clean Windows"
-var_to_print = None
-for task in tasks:
-    if task["description"] == var_description:
-        var_to_print = task
+#Task5
 
-print(f"#Task5 is {var_to_print}")
-
-#Task 6
-
-var_description = "Clean Windows"
-var_to_print = None
-for task in tasks:
-    if task["description"] == var_description:
-        task["completed"] = True
-
-print(f"#Task6 answer has changed result for {var_description} to True, see: {tasks}")
-
-#Task 7
-
-new_task = {
-    "description" : "clean kitchen",
-    "completed" : True,
-    "time_taken" : 20
-}
-
-tasks.append(new_task)
-
-print(f"#Task7 The new list is {tasks}")
-print(f"#Task7 the new dict is {tasks[-1]}")
+def specific_task_description(desc):
+    for task in tasks:
+        if task["description"] == desc:
+            return task
 
 
+var_5 = specific_task_description("Clean Windows")
+print(var_5)
+
+
+#Task6
+
+def make_complete(desc):
+    for task in tasks:
+        if task["description"] == desc:
+            task["completed"] = True
+    return tasks
+
+var_6 = make_complete("Feed Cat")
+print(var_6)
+
+
+#Task7
+
+def add_task(description,completed,time_taken):
+    new_list ={}
+    new_list["description"] = description
+    new_list["completed"] = completed
+    new_list["time_taken"] = time_taken
+    tasks.append(new_list)
+    return tasks
+
+var_7 = add_task("Clean Kitchen",True, 18)
+
+
+print(var_7)
+
+    
