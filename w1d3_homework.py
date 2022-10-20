@@ -7,7 +7,7 @@ tasks = [
 ]
 
 #Task1
-def uncompleted_tasks(list,status):
+def uncompleted_tasks(list, status):
     var1 = []
     for task in list:
         if task["completed"] == status:
@@ -55,15 +55,16 @@ def specific_task_description(desc, list):
     for task in list:
         if task["description"] == desc:
             return task
+    return "Task not found"
 
 
-var_5 = specific_task_description("Clean Windows",tasks)
+var_5 = specific_task_description("Sing!",tasks)
 print(var_5)
 
 
 #Task6
 
-def make_complete(desc,list):
+def make_complete(desc, list):
     for task in list:
         if task["description"] == desc:
             task["completed"] = True
@@ -75,7 +76,7 @@ print(var_6)
 
 #Task7
 
-def add_task(list,description,completed,time_taken):
+def add_task(list, description,completed,time_taken):
     new_list ={}
     new_list["description"] = description
     new_list["completed"] = completed
