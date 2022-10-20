@@ -7,83 +7,83 @@ tasks = [
 ]
 
 #Task1
-def uncompleted_tasks():
+def uncompleted_tasks(list,status):
     var1 = []
-    for task in tasks:
-        if task["completed"] == False:
+    for task in list:
+        if task["completed"] == status:
             var1.append(task)
     return var1
 
-var_1 = uncompleted_tasks()
+var_1 = uncompleted_tasks(tasks,False)
 print(var_1)
 
 #Task2
-def completed_tasks():
+def completed_tasks(list, status):
     var2 = []
-    for task in tasks:
-        if task["completed"] == True:
+    for task in list:
+        if task["completed"] == status:
             var2.append(task)
     return var2
 
-var_2 = completed_tasks()
+var_2 = completed_tasks(tasks, True)
 print(var_2)
 
 #Task3
-def print_descriptions():
+def print_descriptions_list(list):
     var3 = []
-    for task in tasks:
+    for task in list:
         var3.append(task["description"])
     return var3
 
-var_3 = print_descriptions()
+var_3 = print_descriptions_list(tasks)
 print(var_3)
 
 #Task4
-def time_taken(task_time):
+def time_taken(list, task_time):
     var4 =[]
-    for task in tasks:
-        if task["time_taken"]<= task_time:
+    for task in list:
+        if task["time_taken"]>= task_time:
             var4.append(task)
     return var4
 
-var_4 = time_taken(15)
+var_4 = time_taken(tasks, 15)
 print(var_4)
 
 #Task5
 
-def specific_task_description(desc):
-    for task in tasks:
+def specific_task_description(desc, list):
+    for task in list:
         if task["description"] == desc:
             return task
 
 
-var_5 = specific_task_description("Clean Windows")
+var_5 = specific_task_description("Clean Windows",tasks)
 print(var_5)
 
 
 #Task6
 
-def make_complete(desc):
-    for task in tasks:
+def make_complete(desc,list):
+    for task in list:
         if task["description"] == desc:
             task["completed"] = True
     return tasks
 
-var_6 = make_complete("Feed Cat")
+var_6 = make_complete("Feed Cat",tasks)
 print(var_6)
 
 
 #Task7
 
-def add_task(description,completed,time_taken):
+def add_task(list,description,completed,time_taken):
     new_list ={}
     new_list["description"] = description
     new_list["completed"] = completed
     new_list["time_taken"] = time_taken
-    tasks.append(new_list)
-    return tasks
+    list.append(new_list)
+    return list
 
-var_7 = add_task("Clean Kitchen",True, 18)
+var_7 = add_task(tasks,"Clean Kitchen",True, 18)
 
 
 print(var_7)
